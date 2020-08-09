@@ -1,0 +1,38 @@
+{
+  "name": "genius-api-client",
+  "version": "0.0.0-development",
+  "description": "JavaScript Client for accessing Genius.com api",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "build": "rm -rf dist && rollup -c && tsc --emitDeclarationOnly",
+    "prepublish:public": "npm run build && npm run bump-version",
+    "publish:public": "npm publish --access public",
+    "test": "npx jest test/"
+  },
+  "keywords": [
+    "genius.com",
+    "lyrics",
+    "genius",
+    "api",
+    "client"
+  ],
+  "author": "Ricardo Ledan",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-typescript": "^7.10.4",
+    "@rollup/plugin-babel": "^5.1.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "jest": "^26.2.2",
+    "rollup": "^2.23.1",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0"
+  }
+}
