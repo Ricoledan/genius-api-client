@@ -1,7 +1,7 @@
 {
   "name": "genius-api-client",
   "version": "0.0.0-development",
-  "description": "JavaScript Client for accessing Genius.com api",
+  "description": "🎧 JavaScript Client for accessing Genius.com api",
   "files": [
     "dist"
   ],
@@ -9,30 +9,42 @@
   "module": "dist/index.esm.js",
   "scripts": {
     "build": "rm -rf dist && rollup -c && tsc --emitDeclarationOnly",
+    "lint": "eslint . --ext .ts",
     "prepublish:public": "npm run build && npm run bump-version",
     "publish:public": "npm publish --access public",
+    "semantic-release": "semantic-release --branches main",
     "test": "npx jest test/"
   },
   "keywords": [
     "genius.com",
-    "lyrics",
-    "genius",
-    "api",
-    "client"
+    "genius api client",
+    "api client"
   ],
   "author": "Ricardo Ledan",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@babel/preset-typescript": "^7.10.4",
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-angular": "^9.1.1",
     "@rollup/plugin-babel": "^5.1.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
+    "eslint": "^7.6.0",
     "jest": "^26.2.2",
+    "prettier": "^2.0.5",
     "rollup": "^2.23.1",
     "typescript": "^3.9.7"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "dotenv": "^8.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ricoledan/genius-api-client"
   }
 }
