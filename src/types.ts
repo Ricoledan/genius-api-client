@@ -8,7 +8,7 @@ interface AllSongDetails {
 
 interface Search {
   id: string
-  songs: object[]
+  songs: any[]
 }
 
 interface Artist {
