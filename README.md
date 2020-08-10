@@ -1,6 +1,6 @@
 # Genius API Client
 
-## API Documentation
+## Documentation
 
 [Genius.com API Documentation](https://docs.genius.com/#/getting-started-h1)
 

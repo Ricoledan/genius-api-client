@@ -5,7 +5,7 @@ const HTTPClient = axios.create({
   method: 'GET',
   baseURL: 'https://api.genius.com/',
   headers: {
-    Authorization: process.env.BEARER_TOKEN,
+    Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
     'content-type': 'application/json',
     useQueryString: true,
   },
@@ -19,45 +19,62 @@ const HTTPClient = axios.create({
   },
 })
 
-const getArtist = (name) =>
+const getArtistIdDetails = (name: string) =>
   HTTPClient({
     url: 'search',
     params: {
       q: `${name}`,
+      text_format: 'plain',
     },
   })
-    .then((response) => {
-      // all data
-      console.log(JSON.stringify(response.data.response.hits, null, 2))
-      // select data
-      let i
-      for (i = 0; i < response.data.response.hits.length; i++) {
-        console.log(
-          'title:',
-          response.data.response.hits[i].result.title,
-          'song_id:',
-          response.data.response.hits[i].result.id,
-          'lyrics_url:',
-          response.data.response.hits[i].result.url
-        )
-      }
-    })
+    .then((response) =>
+      console.log({
+        id: String(response.data.response.hits[0].result.primary_artist.id),
+        songs: getSongDetails(response.data.response.hits),
+      })
+    )
     .catch((error) => {
       console.log(error.response)
     })
 
-const getSong = (songId) =>
+function getSongDetails(response) {
+  let i,
+    obj = []
+  for (i = 0; i < response.length; i++) {
+    console.log(response[i].result)
+    obj.push({
+      song_id: response[i].result.id,
+      full_song_title: response[i].result.title_with_featured,
+      song_title: response[i].result.title,
+      song_art_image_thumbnail: response[i].result.song_art_image_thumbnail_url,
+      song_art_image_url: response[i].result.song_art_image_url,
+    })
+  }
+  return obj
+}
+
+const getArtistDetails = (id: string) => {
   HTTPClient({
-    url: `songs/${songId}`,
+    url: `/artists/${id}`,
+    params: {
+      text_format: 'plain',
+    },
   })
-    .then((response) => {
-      // all data
-      console.log(JSON.stringify(response.data.response.song, null, 2))
-    })
+    .then((response) =>
+      console.log({
+        bio: response.data.response.artist.description.plain,
+        alias: response.data.response.artist.alternate_names,
+        social_media: {
+          facebook: response.data.response.artist.facebook_name,
+          instagram: response.data.response.artist.instagram_name,
+          twitter: response.data.response.artist.twitter_name,
+        },
+      })
+    )
     .catch((error) => {
       console.log(error.response)
-      // grab media links
     })
+}
 
-getArtist('Kendrick Lamar')
-getSong('3039923')
+getArtistIdDetails('Kendrick Lamar')
+getArtistDetails('1421')
