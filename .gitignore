@@ -19,5 +19,6 @@ jspm_packages/
 .env
 
 build
+dist
 .vscode
 .idea
