@@ -1,6 +1,6 @@
 {
   "name": "genius-api-client",
-  "version": "1.1.100",
+  "version": "1.1.2",
   "description": "🎧 JavaScript Client for accessing Genius.com api",
   "files": [
     "dist"
@@ -12,10 +12,9 @@
     "bump:npm": "npm version patch",
     "commitmsg": "npx commitlint -e $GIT_PARAMS",
     "lint": "eslint . --ext .ts",
-    "prepublish": "npm run build && npm run bump:npm",
+    "prepare": "npm run build && npm run bump:npm",
     "publish": "npm publish --access public",
     "dev": "npm run build && node dist/index.cjs.js",
-    "release": "np",
     "semantic-release": "semantic-release --branches main",
     "test": "npx jest test/"
   },
@@ -41,7 +40,6 @@
     "eslint": "^7.6.0",
     "husky": "^4.2.5",
     "jest": "^26.2.2",
-    "np": "^6.4.0",
     "prettier": "^2.0.5",
     "rollup": "^2.23.1",
     "rollup-plugin-babel": "^4.4.0",
