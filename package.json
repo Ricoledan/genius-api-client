@@ -13,7 +13,6 @@
     "commitmsg": "npx commitlint -e $GIT_PARAMS",
     "lint": "eslint . --ext .ts",
     "prepare": "npm run build && npm run bump:npm",
-    "publish": "npm publish --access public",
     "dev": "npm run build && node dist/index.cjs.js",
     "semantic-release": "semantic-release --branches main",
     "test": "npx jest test/"
