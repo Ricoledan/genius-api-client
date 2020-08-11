@@ -1,6 +1,6 @@
 {
   "name": "genius-api-client",
-  "version": "0.0.0-development",
+  "version": "0.0.0",
   "description": "🎧 JavaScript Client for accessing Genius.com api",
   "files": [
     "dist"
