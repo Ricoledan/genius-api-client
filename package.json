@@ -1,6 +1,6 @@
 {
   "name": "genius-api-client",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "🎧 JavaScript Client for accessing Genius.com api",
   "files": [
     "dist"
@@ -9,6 +9,7 @@
   "module": "dist/index.esm.js",
   "scripts": {
     "build": "rm -rf dist && rollup -c && tsc --emitDeclarationOnly",
+    "bump:npm": "npm version patch",
     "commitmsg": "npx commitlint -e $GIT_PARAMS",
     "lint": "eslint . --ext .ts",
     "prepublish:public": "npm run build && npm run bump-version",
