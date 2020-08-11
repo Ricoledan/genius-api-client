@@ -1,5 +1,7 @@
 # Genius API Client
 
+🎧 JavaScript Client for accessing the Genius.com api
+
 ## Documentation
 
 [Genius.com API Documentation](https://docs.genius.com/#/getting-started-h1)
