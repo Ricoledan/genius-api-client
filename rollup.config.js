@@ -1,59 +1,34 @@
-import resolve from '@rollup/plugin-node-resolve'
-import localResolve from 'rollup-plugin-local-resolve'
-import pkg from './package.json'
-import babel from '@rollup/plugin-babel'
-import commonjs from '@rollup/plugin-commonjs'
-import json from '@rollup/plugin-json'
+import typescript from 'rollup-plugin-typescript2'
 import filesize from 'rollup-plugin-filesize'
-import minify from 'rollup-plugin-babel-minify'
-import { terser } from 'rollup-plugin-terser'
-const extensions = ['.js', '.ts']
+import pkg from './package.json'
 
-const INPUT_FILE_PATH = 'src/index.ts'
+const extensions = ['.js', '.jsx', '.ts', '.tsx']
+const input = 'src/index.ts'
 
-const GLOBALS = {
-  axios: 'axios',
-}
-
-const EXTERNAL = ['axios']
-
-const OUTPUT_DATA = [
-  {
-    file: pkg.main,
-    format: 'cjs',
-  },
-  {
-    file: pkg.module,
-    format: 'es',
-  },
-]
-
-const PLUGINS = [
-  json(),
-  localResolve(),
-  resolve({
-    extensions,
+const plugins = [
+  typescript({
+    typescript: require('typescript'),
   }),
-  babel({
-    exclude: 'node_modules/**',
-    extensions,
-  }),
-  minify(),
-  terser(),
-  commonjs(),
   filesize(),
 ]
 
-const config = OUTPUT_DATA.map(({ file, format }) => ({
-  input: INPUT_FILE_PATH,
-  output: {
-    file,
-    format,
-    name: pkg.name,
-    globals: GLOBALS,
+export default [
+  {
+    input,
+    output: {
+      file: pkg.module,
+      format: 'esm',
+      sourcemap: true,
+    },
+    plugins,
   },
-  external: EXTERNAL,
-  plugins: PLUGINS,
-}))
-
-export default config
+  {
+    input,
+    output: {
+      file: pkg.main,
+      format: 'cjs',
+      sourcemap: true,
+    },
+    plugins,
+  },
+]

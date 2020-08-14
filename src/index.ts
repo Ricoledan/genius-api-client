@@ -21,7 +21,7 @@ const HTTPClient = axios.create({
 })
 
 function getAllSongDetails(response): AllSongDetails[] {
-  let i
+  let i: number
   const obj = []
   for (i = 0; i < response.length; i++) {
     obj.push({
