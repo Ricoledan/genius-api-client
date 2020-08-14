@@ -4,7 +4,6 @@ src/**
 test/**
 
 README.md
-LISCENSE
 
 commitlint.config.js
 *.test.js
@@ -14,7 +13,7 @@ commitlint.config.js
 
 .eslintignore
 .eslintrc
-
+.babelrc
 
 .huskyrc
 .prettierrc.json

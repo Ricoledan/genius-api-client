@@ -1,6 +1,6 @@
 {
   "name": "genius-api-client",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "🎧 JavaScript Client for accessing Genius.com api",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
