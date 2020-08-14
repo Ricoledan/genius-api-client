@@ -1,20 +1,16 @@
 {
   "name": "genius-api-client",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "🎧 JavaScript Client for accessing Genius.com api",
-  "files": [
-    "dist"
-  ],
-  "main": "dist/index.cjs.js",
+  "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "scripts": {
-    "build": "rm -rf dist && rollup -c && tsc --emitDeclarationOnly",
-    "commitmsg": "npx commitlint -e $GIT_PARAMS",
+    "build": "rm -rf dist && npx rollup -c",
+    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
     "lint": "eslint . --ext .ts",
-    "dev": "npm run build && node dist/index.cjs.js",
-    "release": "np",
-    "semantic-release": "semantic-release --branches main",
-    "test": "npx jest test/"
+    "dev": "npm run build && node dist/index.js",
+    "test": "jest",
+    "test:watch": "npm t -- --watch"
   },
   "keywords": [
     "genius.com",
@@ -23,29 +19,24 @@
   ],
   "author": "Ricardo Ledan",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ricoledan/genius-api-client/issues"
+  },
+  "homepage": "https://github.com/Ricoledan/genius-api-client#readme",
   "devDependencies": {
-    "@babel/core": "^7.11.1",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/preset-typescript": "^7.10.4",
     "@commitlint/cli": "^9.1.1",
-    "@commitlint/config-angular": "^9.1.1",
-    "@rollup/plugin-babel": "^5.1.0",
-    "@rollup/plugin-commonjs": "^14.0.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@commitlint/config-conventional": "^9.1.1",
+    "@types/jest": "^26.0.9",
     "@typescript-eslint/eslint-plugin": "^3.9.0",
     "@typescript-eslint/parser": "^3.9.0",
     "eslint": "^7.6.0",
     "husky": "^4.2.5",
     "jest": "^26.2.2",
-    "np": "^6.4.0",
     "prettier": "^2.0.5",
     "rollup": "^2.23.1",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-babel-minify": "^10.0.0",
     "rollup-plugin-filesize": "^9.0.2",
-    "rollup-plugin-local-resolve": "^1.0.7",
-    "rollup-plugin-terser": "^7.0.0",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "ts-jest": "^26.2.0",
     "typescript": "^3.9.7"
   },
   "dependencies": {
