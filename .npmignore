@@ -3,11 +3,22 @@ node_modules/**
 src/**
 test/**
 
+README.md
+LISCENSE
+
 commitlint.config.js
 *.test.js
-**/__mocks__/**
 
-.eslintcache
-.babelrc
+.github/**
+.env.defaults
+
 .eslintignore
 .eslintrc
+
+
+.huskyrc
+.prettierrc.json
+jest.config.js
+rollup.config.js
+release.config.js
+tsconfig.json
